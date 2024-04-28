@@ -1,0 +1,38 @@
+\section{E. ABC String}
+
+\begin{frame} % No title at first slide
+    \sectiontitle{E}{ABC String}
+    \sectionmeta{
+        \texttt{greedy}\\
+        출제진 의도 -- \textbf{\color{acgold}Gold1}
+    }
+    \begin{itemize}
+        \item 제출 ??번, 정답 ??명 (정답률 ??.??\%)
+        \item 처음 푼 사람: \textbf{??}, ??분
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\textbf{E}. ABC String}
+    \begin{itemize}
+        \item 문자열을 돌면서 시뮬레이션을 해봅니다.
+        \item 예를 들어 $AABBCC$일 때, $AA$에서 이미 2개가 필요함을 알 수 있습니다.
+        \item $AABB$에서 $AB, AB$로 나눌 수 있습니다.
+        \item $AABBCC$에서 $ABC, ABC$로 나눠져 답이 2가 됩니다.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\textbf{E}. ABC String}
+    \begin{itemize}
+        \item 문자열을 돌면서 prefix마다 $A, B, C$ 각각의 개수 합을 구해볼까요?
+        \item 예를 들어 특정 인덱스 $i$에서 $cnt(A)=4, cnt(B)=3, cnt(C)=2$일 때, 문자열을 어떻게 나눠야 가장 적은 개수로 만들 수 있을까요?
+        \item $ABCABCAB, A$ 처럼 나누면 최소 개수가 됩니다.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\textbf{E}. ABC String}
+    \begin{itemize}
+        \item $min(cnt(A),cnt(B),cnt(C)$는 $ABC$의 개수, $max(cnt(A),cnt(B),cnt(C))-min(cnt(A),cnt(B),cnt(C))$는 $ABC$를 이루지 못한 $A,B,C,AB,AC,BC$의 개수입니다.
+        \item $max(cnt(A),cnt(B),cnt(C))-min(cnt(A),cnt(B),cnt(C))$ 중 한 개는 $ABC$로 이동할 수 있습니다.
+        \item 즉 일반화하면, 모든 prefix의 $max(cnt(A),cnt(B),cnt(C))-min(cnt(A),cnt(B),cnt(C))$의 값을 구해 최대값을 구하면 답이 됩니다.
+    \end{itemize}
+\end{frame}

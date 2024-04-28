@@ -1,0 +1,31 @@
+\section{C. Corrupted Gradebook}
+
+\begin{frame} % No title at first slide
+    \sectiontitle{C}{Corrupted Gradebook}
+    \sectionmeta{
+        \texttt{dynamic\_programming}\\
+        난이도 -- \textbf{\color{acgold}Gold4-5}
+    }
+    \begin{itemize}
+        \item 제출 ??번, 정답 ??명 (정답률 ??.??\%)
+        \item 처음 푼 사람: \textbf{??}, ??분
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\textbf{C}. Corrupted Gradebook}
+    \begin{itemize}
+        \item string의 길이 $|S|$는 최대 $3G$임이 보장됩니다.
+        \item 이 때 파싱할 수 있는 모든 경우의 수를 탐색한다면, 시간복잡도는 \complexity{CG {}_{|S|} \mathrm{C}_G}로, 시간초과가 발생합니다.
+        \item 최댓값만 저장하면 되므로, $i$번째 문자까지 $j$개의 수로 파싱했을 때 최대 점수 합만을 저장하면 어떨까요?
+        \item $dp(0,0)=0, ans=dp(|S|,G)$로 두고 $dp$를 돌릴 수 있습니다.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\textbf{C}. Corrupted Gradebook}
+    \begin{itemize}
+        \item 점화식은 $dp(i,j)=max_{k=1}^{3}(dp(i-k,j-1)+getInt(i-k+1,i))$입니다.
+        \item $getInt(i-k+1,i)$가 $0$이 아니면서 $0$으로 시작하는지, $100$을 초과하는지도 체크합니다.
+        \item 최종적으로 구해야 할 평균은 double로 바꿔 round 연산을 수행하거나, 나머지 연산으로 구합니다.
+        \item 시간복잡도는 \complexity{CG^2}입니다.
+    \end{itemize}
+\end{frame}

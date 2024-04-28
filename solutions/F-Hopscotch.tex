@@ -1,0 +1,47 @@
+\section{F. Hopscotch}
+
+\begin{frame} % No title at first slide
+    \sectiontitle{F}{Hopscotch}
+    \sectionmeta{
+        \texttt{math, combinatorics, dnc}\\
+        출제진 의도 -- \textbf{\color{acplatinum}Platinum3}
+    }
+    \begin{itemize}
+        \item 제출 ??번, 정답 ??명 (정답률 ??.??\%)
+        \item 처음 푼 사람: \textbf{??}, ??분
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\textbf{F}. Hopscotch}
+    \begin{itemize}
+        \item 문제의 경우를 수식으로 나타내볼까요?
+        \item $x_{1}+x_{2}+...+x_{m}=N-mX$, $y_{1}+y_{2}+...+y_{m}=N-mY (x_{i}, y_{i} \geq 0)$입니다.
+        \item 각 $x, y$ 값 경우의 수는 독립사건이므로, 따로 구해서 곱해줄 수 있습니다.
+        \item 이 수식을 보고 우리는 고등학교 확통을 떠올릴 수 있습니다.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\textbf{F}. Hopscotch}
+    \begin{itemize}
+        \item 네, 중복조합입니다. hop 수가 $m$회일 때 경우의 수는 ${}_m \mathrm{H}_{N-mX} \times {}_m \mathrm{H}_{N-mY}$
+        \item $= {}_{m(1-X)+N-1} \mathrm{C}_{N-mX} \times {}_{m(1-Y)+N-1} \mathrm{C}_{N-mY}$입니다.
+        \item 이 값을 전처리 없이 구한다면 시간초과가 뜰 것입니다.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\textbf{F}. Hopscotch}
+    \begin{itemize}
+        \item 이 값을 빠르게 구하기 위해, $1!$부터 $N!$ 및 이들의 모듈러 역원까지 미리 구해놔야 합니다.
+        \item 모듈러 역원은 문제 지문(페르마의 소정리)에서처럼 $(N!)^{mod-2}$를 구하면 됩니다.
+        \item 이 값은 분할정복을 활용한 거듭제곱을 통해 \complexity{log(mod)} 에 구할 수 있습니다.
+        \item 여기까지 시간복잡도는 \complexity{Nlog(mod)}입니다.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\textbf{F}. Hopscotch}
+    \begin{itemize}
+        \item 이제 어떤 ${}_{n} \mathrm{C}_{r}$이 들어와도 \complexity{1} 에 구할 수 있습니다.
+        \item $N-mX \geq 0, N-mY \geq 0$인 $m$을 돌며 모든 값을 구해줍니다.
+        \item 총 시간복잡도는 \complexity{Nlog(mod)}입니다.
+    \end{itemize}
+\end{frame}
